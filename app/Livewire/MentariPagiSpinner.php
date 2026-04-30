@@ -113,6 +113,8 @@ class MentariPagiSpinner extends Component
         $this->loadEligibleCandidates();
 
         session()->flash('success', "{$this->winner->name} has won {$this->prize}!");
+
+        $this->dispatch('winner-selected', name: $this->winner->name);
     }
 
     public function getEligibleCountProperty()

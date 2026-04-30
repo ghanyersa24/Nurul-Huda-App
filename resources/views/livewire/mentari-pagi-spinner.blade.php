@@ -211,7 +211,7 @@
                 <div class="text-center w-full max-w-md space-y-5">
                     @if ($this->winner)
                         <div wire:key="winner-alert-{{ $this->winner->id }}"
-                            class="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 rounded-3xl p-6 shadow-2xl shadow-emerald-600/30 text-white">
+                            class="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 rounded-3xl p-6 shadow-2xl shadow-emerald-600/30 text-white animate-winner-pop ring-4 ring-yellow-300/60">
                             <div class="absolute -top-12 -right-12 w-40 h-40 bg-yellow-300/20 rounded-full blur-2xl">
                             </div>
                             <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-teal-300/20 rounded-full blur-2xl">
@@ -332,9 +332,9 @@
                     <p class="text-xs text-slate-500 mb-5 ml-9">Last 10 draws</p>
 
                     <div class="space-y-1 max-h-80 overflow-y-auto pr-1 -mr-1">
-                        @forelse($this->recentWinners as $winner)
+                        @forelse($this->recentWinners as $index => $winner)
                             <div wire:key="winner-{{ $winner->id }}"
-                                class="relative flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                                class="relative flex items-start gap-3 p-3 rounded-xl transition-colors {{ $index === 0 && $this->winner ? 'bg-gradient-to-r from-yellow-50 via-amber-50 to-orange-50 ring-2 ring-amber-300/60 animate-winner-glow' : 'hover:bg-slate-50' }}">
                                 <div class="relative shrink-0 mt-0.5">
                                     <div
                                         class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-100 text-emerald-700 flex items-center justify-center text-xs font-bold ring-1 ring-emerald-200/50">
@@ -370,4 +370,70 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <style>
+        @keyframes winner-pop {
+            0% { transform: scale(0.85); opacity: 0; }
+            60% { transform: scale(1.04); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-winner-pop { animation: winner-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+        @keyframes winner-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6); }
+            50% { box-shadow: 0 0 0 6px rgba(251, 191, 36, 0); }
+        }
+        .animate-winner-glow { animation: winner-glow 1.8s ease-in-out infinite; }
+    </style>
+    <script>
+        document.addEventListener('livewire:init', () => {
+            const fireConfetti = () => {
+                if (typeof confetti !== 'function') return;
+
+                const duration = 2500;
+                const end = Date.now() + duration;
+                const colors = ['#10b981', '#fbbf24', '#f59e0b', '#065f46', '#a7f3d0', '#ffffff'];
+
+                confetti({
+                    particleCount: 120,
+                    spread: 90,
+                    startVelocity: 55,
+                    origin: { y: 0.6 },
+                    colors,
+                });
+
+                (function frame() {
+                    confetti({
+                        particleCount: 4,
+                        angle: 60,
+                        spread: 70,
+                        origin: { x: 0, y: 0.7 },
+                        colors,
+                    });
+                    confetti({
+                        particleCount: 4,
+                        angle: 120,
+                        spread: 70,
+                        origin: { x: 1, y: 0.7 },
+                        colors,
+                    });
+
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                })();
+            };
+
+            Livewire.on('winner-selected', () => {
+                setTimeout(() => {
+                    const card = document.querySelector('[wire\\:key^="winner-alert-"]');
+                    if (card) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    fireConfetti();
+                }, 80);
+            });
+        });
+    </script>
 </div>
