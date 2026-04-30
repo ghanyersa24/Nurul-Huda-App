@@ -6,8 +6,12 @@ use App\Models\Attendance;
 use App\Models\Jamaah;
 use App\Models\WinnerHistory;
 use Illuminate\Support\Collection;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Layout('components.layouts.spinner')]
+#[Title('Mentari Pagi Spinner')]
 class MentariPagiSpinner extends Component
 {
     public ?string $selectedDate = null;

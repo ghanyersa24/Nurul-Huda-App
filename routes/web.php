@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/mentari-pagi-spinner', MentariPagiSpinner::class)->name('mentari-pagi-spinner');
+Route::get('/spinner', MentariPagiSpinner::class)->name('mentari-pagi-spinner');
