@@ -58,11 +58,9 @@ class MentariPagiSpinner extends Component
             return;
         }
 
-        // Get attendees from Mentari Pagi event on the selected date who haven't won yet
         $attendances = Attendance::whereDate('scanned_at', $this->selectedDate)
             ->whereTime('scanned_at', '>=', $this->startTime.':00')
             ->whereTime('scanned_at', '<=', $this->endTime.':00')
-            ->where('present', true)
             ->whereHas('jamaah', function ($query) {
                 $query->whereNotIn('id', function ($subQuery) {
                     $subQuery->select('jamaah_id')

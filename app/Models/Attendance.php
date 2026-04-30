@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['jamaah_id', 'rfid_code', 'prayer_time', 'event', 'scanned_at', 'present', 'note'])]
+#[Fillable(['jamaah_id', 'rfid_code', 'prayer_time', 'scanned_at', 'note'])]
 class Attendance extends Model
 {
     /** @use HasFactory<AttendanceFactory> */
@@ -18,7 +18,6 @@ class Attendance extends Model
     {
         return [
             'scanned_at' => 'datetime',
-            'present' => 'boolean',
         ];
     }
 

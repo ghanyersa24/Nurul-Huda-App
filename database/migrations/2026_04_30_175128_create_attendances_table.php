@@ -16,9 +16,7 @@ return new class extends Migration
             $table->foreignId('jamaah_id')->constrained()->cascadeOnDelete();
             $table->string('rfid_code')->nullable();
             $table->enum('prayer_time', ['subuh', 'dzuhur', 'ashar', 'maghrib', 'isya'])->nullable();
-            $table->enum('event', ['regular', 'mentari_pagi'])->default('regular');
             $table->timestamp('scanned_at')->useCurrent();
-            $table->boolean('present')->default(true);
             $table->text('note')->nullable();
             $table->timestamps();
         });

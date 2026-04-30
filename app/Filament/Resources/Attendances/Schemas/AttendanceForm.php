@@ -30,6 +30,8 @@ class AttendanceForm
                 TextInput::make('rfid_code')
                     ->disabled()
                     ->placeholder('Will be auto-filled when Jamaah is selected'),
+                DateTimePicker::make('scanned_at')
+                    ->required(),
                 Select::make('prayer_time')
                     ->options([
                         'subuh' => 'Subuh',
@@ -39,21 +41,6 @@ class AttendanceForm
                         'isya' => 'Isya',
                     ])
                     ->nullable(),
-                Select::make('event')
-                    ->options([
-                        'regular' => 'Regular',
-                        'mentari_pagi' => 'Mentari Pagi',
-                    ])
-                    ->required(),
-                DateTimePicker::make('scanned_at')
-                    ->required(),
-                Select::make('present')
-                    ->options([
-                        1 => 'Present',
-                        0 => 'Absent',
-                    ])
-                    ->default(1)
-                    ->required(),
                 Textarea::make('note')
                     ->rows(3)
                     ->nullable(),
