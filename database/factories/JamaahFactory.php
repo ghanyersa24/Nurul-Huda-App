@@ -18,7 +18,12 @@ class JamaahFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'rfid' => fake()->unique()->numerify('RFID########'),
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->phoneNumber(),
+            'birth_date' => fake()->dateTimeBetween('-60 years', '-18 years')->format('Y-m-d'),
+            'address' => fake()->address(),
         ];
     }
 }
