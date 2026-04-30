@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPRES-NH - Attendance Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#2a4d40",
+                        "on-primary-container": "#80bea6",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#064e3b",
+                        "surface": "#f7f9fb",
+                        "tertiary": "#183327",
+                        "secondary": "#426657",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#c4ebd9",
+                        "on-secondary-fixed": "#002116",
+                        "inverse-primary": "#95d3ba",
+                        "on-surface": "#191c1e",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed": "#002117",
+                        "primary-fixed-dim": "#95d3ba",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#707974",
+                        "secondary-fixed-dim": "#a8cfbd",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eceef0",
+                        "inverse-surface": "#2d3133",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#bfc9c3",
+                        "surface-tint": "#2b6954",
+                        "background": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#aecebc",
+                        "primary": "#003527",
+                        "on-surface-variant": "#404944",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#0b513d",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-dim": "#d8dadc",
+                        "tertiary-container": "#2e4a3d",
+                        "on-secondary-container": "#466a5b",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-tertiary-fixed-variant": "#314c3f",
+                        "tertiary-fixed": "#caead8",
+                        "primary-fixed": "#b0f0d6",
+                        "on-tertiary-fixed": "#042015",
+                        "secondary-container": "#c1e8d6",
+                        "on-tertiary-container": "#9ab9a8"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "xs": "4px",
+                        "margin": "32px",
+                        "sm": "8px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "unit": "4px"
+                    },
+                    fontFamily: {
+                        "body-sm": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    fontSize: {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "h2": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "h1": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar (Hidden on Mobile, Visible on Desktop) -->
+<nav class="hidden md:flex flex-col bg-surface-container-lowest text-primary h-screen w-64 border-r border-outline-variant fixed left-0 top-0 pt-4 pb-8 z-50">
+<div class="px-gutter mb-8 flex flex-col items-center">
+<div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mb-sm overflow-hidden">
+<img alt="Mosque Logo" class="w-full h-full object-cover" data-alt="A highly detailed, serene logo image featuring a minimalist geometric mosque dome illustration in deep emerald green and soft white. The image exudes a modern corporate yet spiritual aesthetic, with clean lines, smooth gradients, and a calming lighting atmosphere perfect for a professional religious administration system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJSpSgoqwSGyIX-vWAMQri_5OeT3RduyyGtze3HRIP7faludwL4QO0xD8mR7jUZ21ZYmrDvt2Xa0eUo5INTzs6as1Ir-PYlFXZTnzR3Nf0QI5fLzIrUo5JUj0jNcl9nzRnY3NZyZ5U7T-I1WdaC9wglxbW4-_uA3MOHdZOv5z0h_70ab7Miw_BPAxP_rY8GuK6aw1nwaf_AGXWR42kx7UZRgcWO1n5i3LdoaI0wA-N1NKghZGs8uv7H7vzI1Ab2HkeGNj51j45MQ"/>
+</div>
+<h1 class="font-h3 text-h3 text-on-primary-fixed-variant text-center">Nurul Huda</h1>
+<p class="font-label-sm text-label-sm text-outline text-center mt-xs">Mosque Management System</p>
+</div>
+<div class="px-md mb-gutter">
+<button class="w-full bg-primary text-on-primary py-sm px-md rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm hover:bg-surface-tint transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Quick Presence
+            </button>
+</div>
+<div class="flex-1 px-md space-y-xs overflow-y-auto">
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-body-sm text-body-sm text-outline hover:text-primary hover:bg-surface-container-low transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-body-sm text-body-sm text-outline hover:text-primary hover:bg-surface-container-low transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Jamaah Management
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-body-sm text-body-sm bg-secondary-fixed text-on-secondary-fixed border-r-4 border-primary font-bold hover:bg-secondary-container transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="assessment" data-weight="fill">assessment</span>
+<span class="text-primary">Attendance Reports</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-body-sm text-body-sm text-outline hover:text-primary hover:bg-surface-container-low transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="adjust">adjust</span>
+                Mentari Pagi Spin
+            </a>
+</div>
+<div class="px-md mt-auto space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-body-sm text-body-sm text-outline hover:text-primary hover:bg-surface-container-low transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Help Center
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-body-sm text-body-sm text-outline hover:text-primary hover:bg-surface-container-low transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 w-full h-screen overflow-hidden bg-background">
+<!-- TopAppBar (Visible on Desktop and Mobile) -->
+<header class="bg-surface-container-lowest text-primary font-body-sm text-body-sm font-medium flex justify-between items-center px-gutter py-3 w-full sticky top-0 z-40 border-b border-outline-variant border-b-0 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-sm">
+<!-- Mobile Menu Button -->
+<button class="md:hidden p-sm text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-h3 text-h3 font-bold text-on-primary-fixed-variant">SIPRES-NH</span>
+</div>
+<div class="flex items-center gap-lg">
+<!-- Search Bar (on_right) -->
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="pl-xl pr-md py-xs rounded-full border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-sm text-body-sm text-on-surface transition-colors w-64" placeholder="Search records..." type="text"/>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-xs">
+<button class="p-sm text-outline hover:bg-surface-container-low hover:text-primary rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-sm text-outline hover:bg-surface-container-low hover:text-primary rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</button>
+<button class="p-sm text-outline hover:bg-surface-container-low hover:text-primary rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<!-- Profile Avatar -->
+<button class="w-8 h-8 rounded-full overflow-hidden ml-sm border border-outline-variant focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A highly detailed, professional headshot of a diverse male administrator in a brightly lit modern office. The image uses a soft, natural daylight setup with a serene, minimalist background. The aesthetic is clean, corporate modern, conveying trust and reliability suitable for a professional mosque management system interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTNbfYiCYeb5JEVNI_4Bl9BmbKWCPf-WIOAS8VsQln5lpya4OAr-gD9yfW080IVmuXov7KbJ-MvM0mrmjzG0qM5elfwBfULBlxz0h8Wx2n7KuJIr29WfX8f2RUi-Fc_w59hmPVU7EpSBP5lwRmBApzGQZVlSwnOIElpLiYMo711uFb8dSpd1v7ym5BttT8fidV0zofY3YzDGELWotNYSGLK35d1W53AD3Br2Y9HBBzGoC7J8jqPYCkZdfRgGJtmYlYxyV1awHAUA"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-margin">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-lg gap-md">
+<div>
+<h2 class="font-h2 text-h2 text-on-background">Attendance Reports</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">View and analyze daily jamaah presence.</p>
+</div>
+<div class="flex gap-sm w-full sm:w-auto">
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-xs px-md py-sm bg-surface-container-lowest border border-outline-variant text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export CSV
+                    </button>
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-xs px-md py-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-surface-tint transition-colors shadow-[0_4px_12px_rgba(0,53,39,0.15)]">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+                        Export PDF
+                    </button>
+</div>
+</div>
+<!-- Controls (Filters & Date) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg mb-gutter grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Date Range -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Date Range</label>
+<button class="relative flex items-center w-full px-md py-sm rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[20px] mr-sm">calendar_today</span>
+<span class="font-body-sm text-body-sm text-on-surface">Oct 01, 2023 - Oct 07, 2023</span>
+<span class="material-symbols-outlined absolute right-sm text-outline text-[20px]">expand_more</span>
+</button>
+</div>
+<!-- Prayer Filter -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Prayer Time</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-[20px]">schedule</span>
+<select class="w-full pl-xl pr-md py-sm rounded-lg border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-sm text-body-sm text-on-surface transition-colors appearance-none cursor-pointer">
+<option value="all">All Prayers</option>
+<option value="fajr">Fajr</option>
+<option value="dhuhr">Dhuhr</option>
+<option value="asr">Asr</option>
+<option value="maghrib">Maghrib</option>
+<option value="isha">Isha</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-outline text-[20px] pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+<!-- Category Filter -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Jamaah Category</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-[20px]">category</span>
+<select class="w-full pl-xl pr-md py-sm rounded-lg border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-sm text-body-sm text-on-surface transition-colors appearance-none cursor-pointer">
+<option value="all">All Categories</option>
+<option value="regular">Regular</option>
+<option value="guest">Guest</option>
+<option value="youth">Youth</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-outline text-[20px] pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg relative overflow-hidden group hover:border-primary-fixed-dim transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-secondary-fixed opacity-20 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div class="flex items-center justify-between mb-sm relative z-10">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Taps</span>
+<span class="material-symbols-outlined text-on-secondary-container bg-secondary-container p-xs rounded-md text-[20px]">touch_app</span>
+</div>
+<div class="relative z-10">
+<span class="font-h1 text-h1 text-on-surface">1,432</span>
+<div class="flex items-center gap-xs mt-xs text-primary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+12% vs last week</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg relative overflow-hidden group hover:border-primary-fixed-dim transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-secondary-fixed opacity-20 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div class="flex items-center justify-between mb-sm relative z-10">
+<span class="font-label-md text-label-md text-on-surface-variant">Avg. Daily Attendance</span>
+<span class="material-symbols-outlined text-on-secondary-container bg-secondary-container p-xs rounded-md text-[20px]">groups</span>
+</div>
+<div class="relative z-10">
+<span class="font-h1 text-h1 text-on-surface">204</span>
+<div class="flex items-center gap-xs mt-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">horizontal_rule</span>
+<span>Stable</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg relative overflow-hidden group hover:border-primary-fixed-dim transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-tertiary-fixed opacity-20 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div class="flex items-center justify-between mb-sm relative z-10">
+<span class="font-label-md text-label-md text-on-surface-variant">Peak Prayer</span>
+<span class="material-symbols-outlined text-on-tertiary-container bg-tertiary-fixed p-xs rounded-md text-[20px]">wb_twilight</span>
+</div>
+<div class="relative z-10">
+<span class="font-h3 text-h3 text-on-surface block mt-sm">Maghrib</span>
+<div class="flex items-center gap-xs mt-xs text-on-surface-variant font-label-sm text-label-sm">
+<span>45% of total taps</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-primary text-on-primary rounded-xl p-lg relative overflow-hidden flex flex-col justify-between shadow-[0_12px_24px_rgba(0,53,39,0.1)]">
+<div class="absolute -right-12 -bottom-12 w-40 h-40 bg-surface-tint opacity-50 rounded-full"></div>
+<div class="relative z-10">
+<span class="font-label-md text-label-md opacity-80">Unique Jamaah</span>
+<span class="font-h1 text-h1 block mt-xs">892</span>
+</div>
+<div class="relative z-10 mt-md">
+<div class="w-full bg-surface-tint h-1.5 rounded-full overflow-hidden">
+<div class="bg-on-primary w-[75%] h-full rounded-full"></div>
+</div>
+<span class="font-label-sm text-label-sm opacity-80 mt-xs block">75% of registered DB</span>
+</div>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden flex flex-col">
+<div class="p-lg border-b border-surface-variant flex justify-between items-center">
+<h3 class="font-h3 text-h3 text-on-surface">Detailed Records</h3>
+<button class="text-primary font-label-md text-label-md hover:text-surface-tint transition-colors">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant">
+<th class="p-md font-label-md text-label-md text-on-surface-variant w-16">#</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant">Timestamp</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant">Jamaah Name</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant">Prayer Type</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant">Category</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant text-right">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface">
+<tr class="border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-md text-outline">1</td>
+<td class="p-md">
+<div class="font-medium">04:32 AM</div>
+<div class="text-outline text-[12px]">Oct 07, 2023</div>
+</td>
+<td class="p-md flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md">AH</div>
+                                    Ahmad Hassan
+                                </td>
+<td class="p-md">Fajr</td>
+<td class="p-md">
+<span class="px-sm py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-[12px] font-medium">Regular</span>
+</td>
+<td class="p-md text-right">
+<span class="inline-flex items-center gap-xs text-primary-container font-medium">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> Logged
+                                    </span>
+</td>
+</tr>
+<tr class="border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-md text-outline">2</td>
+<td class="p-md">
+<div class="font-medium">04:35 AM</div>
+<div class="text-outline text-[12px]">Oct 07, 2023</div>
+</td>
+<td class="p-md flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-label-md">FA</div>
+                                    Fatimah Ali
+                                </td>
+<td class="p-md">Fajr</td>
+<td class="p-md">
+<span class="px-sm py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-[12px] font-medium">Regular</span>
+</td>
+<td class="p-md text-right">
+<span class="inline-flex items-center gap-xs text-primary-container font-medium">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> Logged
+                                    </span>
+</td>
+</tr>
+<tr class="border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-md text-outline">3</td>
+<td class="p-md">
+<div class="font-medium">12:15 PM</div>
+<div class="text-outline text-[12px]">Oct 07, 2023</div>
+</td>
+<td class="p-md flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label-md">UK</div>
+                                    Unknown Guest
+                                </td>
+<td class="p-md">Dhuhr</td>
+<td class="p-md">
+<span class="px-sm py-0.5 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed text-[12px] font-medium">Guest</span>
+</td>
+<td class="p-md text-right">
+<span class="inline-flex items-center gap-xs text-outline font-medium">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span> Manual
+                                    </span>
+</td>
+</tr>
+<tr class="border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-md text-outline">4</td>
+<td class="p-md">
+<div class="font-medium">15:20 PM</div>
+<div class="text-outline text-[12px]">Oct 07, 2023</div>
+</td>
+<td class="p-md flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed-dim text-on-primary-fixed flex items-center justify-center font-label-md">RY</div>
+                                    Rizky Yunus
+                                </td>
+<td class="p-md">Asr</td>
+<td class="p-md">
+<span class="px-sm py-0.5 rounded-full bg-primary-container text-on-primary text-[12px] font-medium">Youth</span>
+</td>
+<td class="p-md text-right">
+<span class="inline-flex items-center gap-xs text-primary-container font-medium">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> Logged
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-md text-outline">5</td>
+<td class="p-md">
+<div class="font-medium">17:55 PM</div>
+<div class="text-outline text-[12px]">Oct 07, 2023</div>
+</td>
+<td class="p-md flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md">SI</div>
+                                    Siti Ibrahim
+                                </td>
+<td class="p-md">Maghrib</td>
+<td class="p-md">
+<span class="px-sm py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-[12px] font-medium">Regular</span>
+</td>
+<td class="p-md text-right">
+<span class="inline-flex items-center gap-xs text-primary-container font-medium">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> Logged
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-md border-t border-surface-variant flex items-center justify-between bg-surface-container-lowest">
+<span class="font-body-sm text-body-sm text-outline">Showing 1 to 5 of 1,432 entries</span>
+<div class="flex items-center gap-xs">
+<button class="p-xs text-outline hover:text-on-surface disabled:opacity-50 transition-colors" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-md bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-md hover:bg-surface-container text-outline font-label-md text-label-md flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded-md hover:bg-surface-container text-outline font-label-md text-label-md flex items-center justify-center transition-colors">3</button>
+<span class="text-outline mx-xs">...</span>
+<button class="w-8 h-8 rounded-md hover:bg-surface-container text-outline font-label-md text-label-md flex items-center justify-center transition-colors">287</button>
+<button class="p-xs text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

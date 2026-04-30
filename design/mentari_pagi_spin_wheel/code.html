@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPRES-NH - Mentari Pagi Spin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "on-secondary-fixed-variant": "#2a4d40",
+                            "on-primary-container": "#80bea6",
+                            "on-error-container": "#93000a",
+                            "primary-container": "#064e3b",
+                            "surface": "#f7f9fb",
+                            "tertiary": "#183327",
+                            "secondary": "#426657",
+                            "on-primary": "#ffffff",
+                            "secondary-fixed": "#c4ebd9",
+                            "on-secondary-fixed": "#002116",
+                            "inverse-primary": "#95d3ba",
+                            "on-surface": "#191c1e",
+                            "surface-container-highest": "#e0e3e5",
+                            "on-primary-fixed": "#002117",
+                            "primary-fixed-dim": "#95d3ba",
+                            "surface-container-lowest": "#ffffff",
+                            "outline": "#707974",
+                            "secondary-fixed-dim": "#a8cfbd",
+                            "error-container": "#ffdad6",
+                            "surface-container": "#eceef0",
+                            "inverse-surface": "#2d3133",
+                            "on-error": "#ffffff",
+                            "outline-variant": "#bfc9c3",
+                            "surface-tint": "#2b6954",
+                            "background": "#f7f9fb",
+                            "on-secondary": "#ffffff",
+                            "surface-variant": "#e0e3e5",
+                            "tertiary-fixed-dim": "#aecebc",
+                            "primary": "#003527",
+                            "on-surface-variant": "#404944",
+                            "error": "#ba1a1a",
+                            "on-primary-fixed-variant": "#0b513d",
+                            "surface-container-high": "#e6e8ea",
+                            "on-tertiary": "#ffffff",
+                            "surface-bright": "#f7f9fb",
+                            "on-background": "#191c1e",
+                            "surface-container-low": "#f2f4f6",
+                            "surface-dim": "#d8dadc",
+                            "tertiary-container": "#2e4a3d",
+                            "on-secondary-container": "#466a5b",
+                            "inverse-on-surface": "#eff1f3",
+                            "on-tertiary-fixed-variant": "#314c3f",
+                            "tertiary-fixed": "#caead8",
+                            "primary-fixed": "#b0f0d6",
+                            "on-tertiary-fixed": "#042015",
+                            "secondary-container": "#c1e8d6",
+                            "on-tertiary-container": "#9ab9a8"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "xs": "4px",
+                            "margin": "32px",
+                            "sm": "8px",
+                            "gutter": "24px",
+                            "lg": "24px",
+                            "md": "16px",
+                            "xl": "40px",
+                            "unit": "4px"
+                    },
+                    "fontFamily": {
+                            "body-sm": ["Inter"],
+                            "h2": ["Inter"],
+                            "body-md": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "h3": ["Inter"],
+                            "label-sm": ["Inter"],
+                            "label-md": ["Inter"],
+                            "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "h2": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                            "h3": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                            "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                            "h1": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full flex flex-col pt-4 pb-8 z-50 h-screen w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hidden md:flex">
+<!-- Header -->
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="mosque">mosque</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-emerald-900 dark:text-emerald-50">Nurul Huda</h1>
+<p class="font-inter text-sm tracking-tight text-slate-500">Mosque Management System</p>
+</div>
+</div>
+<!-- CTA -->
+<div class="px-6 mb-6">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded-lg font-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                Quick Presence
+            </button>
+</div>
+<!-- Tabs -->
+<div class="flex-1 overflow-y-auto px-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-body-sm text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-900 dark:hover:text-emerald-100 transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-body-sm text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-900 dark:hover:text-emerald-100 transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Jamaah Management
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-body-sm text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-900 dark:hover:text-emerald-100 transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                Attendance Reports
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-body-sm bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-r-4 border-emerald-700 font-bold active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="adjust">adjust</span>
+                Mentari Pagi Spin
+            </a>
+</div>
+<!-- Footer -->
+<div class="px-4 mt-auto pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-body-sm text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Help Center
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-body-sm text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-900 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 h-full overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-6 py-3 w-full sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold text-emerald-900 dark:text-emerald-50 block md:hidden">SIPRES-NH</span>
+<div class="hidden md:flex font-h3 text-h3 text-on-surface">Mentari Pagi Session</div>
+</div>
+<div class="flex items-center gap-4">
+<!-- Search Bar -->
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 rounded-full border border-outline-variant bg-surface-container-lowest text-on-surface font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64" placeholder="Search..." type="text"/>
+</div>
+<!-- Trailing Icons -->
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors text-emerald-900 dark:text-emerald-400">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors text-emerald-900 dark:text-emerald-400">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors text-emerald-900 dark:text-emerald-400">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<!-- Profile -->
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant cursor-pointer">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an administrator, clean corporate style, well-lit, neutral background, reflecting the reliable and serene aesthetic of the mosque management system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8Zib6zQRZi-rA1RFkgDRS6p-j0TERdjgYggKIwKAlQr_v542HdgN2hN44F_8WG8nB6CSJbv4-6RwobfG-cinRtiYJkLg9A03shVN7c_fMo1gK1W5LqfdueHWUthYKBGU57-C_mdRtlr0_3gs-e69HKGHXSBCEVdWYv_4rHMnulyeFhYURBuYChrJQ2P2-rUe6r4rNHNPugC1JwXLmH5YRyAzUC47kpMHLN9K4dqy6sc7VSG6zSl9X7DQ0eT78mt031TXJjTN8GA"/>
+</div>
+</div>
+</header>
+<!-- Canvas Area -->
+<main class="flex-1 overflow-y-auto p-gutter bg-surface-container-lowest">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter max-w-7xl mx-auto h-full">
+<!-- Left Column: Candidates -->
+<div class="lg:col-span-3 flex flex-col gap-lg">
+<div class="bg-white rounded-xl border border-surface-variant p-lg flex flex-col h-full shadow-[0_4px_24px_rgba(0,53,39,0.04)]">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-h3 text-h3 text-on-surface">Present Candidates</h2>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded-full">42 Eligible</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Congregants checked in for Fajr prayer.</p>
+<div class="flex-1 overflow-y-auto pr-2 space-y-2">
+<!-- Candidate Item -->
+<div class="flex items-center gap-3 p-3 rounded-lg border border-surface-variant hover:bg-surface-container-low transition-colors cursor-default">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md">
+                                    AH
+                                </div>
+<div class="flex-1 min-w-0">
+<div class="font-label-md text-label-md text-on-surface truncate">Ahmad Hidayat</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant truncate">ID: JM-1042</div>
+</div>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<!-- Candidate Item -->
+<div class="flex items-center gap-3 p-3 rounded-lg border border-surface-variant hover:bg-surface-container-low transition-colors cursor-default">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-label-md">
+                                    SF
+                                </div>
+<div class="flex-1 min-w-0">
+<div class="font-label-md text-label-md text-on-surface truncate">Siti Fadhilah</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant truncate">ID: JM-0891</div>
+</div>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<!-- Candidate Item -->
+<div class="flex items-center gap-3 p-3 rounded-lg border border-surface-variant hover:bg-surface-container-low transition-colors cursor-default">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md">
+                                    RY
+                                </div>
+<div class="flex-1 min-w-0">
+<div class="font-label-md text-label-md text-on-surface truncate">Rizky Yulianto</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant truncate">ID: JM-1102</div>
+</div>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<!-- Candidate Item -->
+<div class="flex items-center gap-3 p-3 rounded-lg border border-surface-variant hover:bg-surface-container-low transition-colors cursor-default opacity-50">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-md">
+                                    BW
+                                </div>
+<div class="flex-1 min-w-0">
+<div class="font-label-md text-label-md text-on-surface truncate line-through">Budi Waseso</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant truncate">Already Won</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-surface-variant">
+<button class="w-full py-2 border border-outline font-label-md text-label-md text-on-surface rounded-lg hover:bg-surface-container-low transition-colors">
+                                Filter Candidates
+                            </button>
+</div>
+</div>
+</div>
+<!-- Center Column: The Wheel -->
+<div class="lg:col-span-6 flex flex-col items-center justify-center relative">
+<div class="w-full max-w-lg aspect-square relative flex items-center justify-center">
+<!-- Wheel Decorative Outer Ring -->
+<div class="absolute inset-0 rounded-full border-[16px] border-primary-container shadow-[0_0_40px_rgba(0,53,39,0.15)] z-0"></div>
+<!-- Wheel Pointer -->
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-12 z-20 flex flex-col items-center">
+<div class="w-4 h-8 bg-error rounded-t-sm shadow-md"></div>
+<div class="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-t-[16px] border-t-error -mt-1"></div>
+</div>
+<!-- The Wheel Graphic (Simulated with CSS Conic Gradient for visual) -->
+<div class="absolute inset-4 rounded-full bg-surface overflow-hidden border-4 border-surface-variant z-10" style="background: conic-gradient(
+                                #003527 0deg 45deg, 
+                                #c4ebd9 45deg 90deg, 
+                                #003527 90deg 135deg, 
+                                #c4ebd9 135deg 180deg, 
+                                #003527 180deg 225deg, 
+                                #c4ebd9 225deg 270deg, 
+                                #003527 270deg 315deg, 
+                                #c4ebd9 315deg 360deg
+                             );">
+<!-- Simulated text on wheel -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center border-4 border-primary">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="star">star</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-xl text-center space-y-4">
+<h1 class="font-h1 text-h1 text-on-surface">Mentari Pagi Draw</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">Select a lucky congregant from today's Fajr attendance.</p>
+<button class="mt-6 px-12 py-4 bg-primary text-on-primary rounded-full font-h3 text-h3 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:translate-y-0 active:shadow-md flex items-center gap-2 mx-auto">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+                            Spin Now
+                        </button>
+</div>
+</div>
+<!-- Right Column: Settings & History -->
+<div class="lg:col-span-3 flex flex-col gap-lg">
+<!-- Prize Config -->
+<div class="bg-white rounded-xl border border-surface-variant p-lg shadow-[0_4px_24px_rgba(0,53,39,0.04)]">
+<h2 class="font-h3 text-h3 text-on-surface mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="redeem">redeem</span>
+                            Current Prize
+                        </h2>
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant mb-4 flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-2xl" data-icon="card_giftcard">card_giftcard</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Umrah Savings Voucher</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Value: Rp 500.000</p>
+<p class="font-label-sm text-label-sm text-primary mt-2">Sponsored by: H. Abdullah</p>
+</div>
+</div>
+<button class="w-full py-2 text-primary font-label-md text-label-md hover:bg-surface-container-lowest rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+                            Change Prize
+                        </button>
+</div>
+<!-- Winner History -->
+<div class="bg-white rounded-xl border border-surface-variant p-lg flex-1 shadow-[0_4px_24px_rgba(0,53,39,0.04)] overflow-hidden flex flex-col">
+<h2 class="font-h3 text-h3 text-on-surface mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+                            Recent Winners
+                        </h2>
+<div class="flex-1 overflow-y-auto pr-2 space-y-4">
+<!-- Winner Item -->
+<div class="flex items-start gap-3 relative">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div class="flex-1 pb-4 border-b border-surface-variant">
+<div class="flex justify-between items-start mb-1">
+<div class="font-label-md text-label-md text-on-surface">Ibrahim Musa</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Yesterday</div>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Won: Sembako Package</div>
+</div>
+</div>
+<!-- Winner Item -->
+<div class="flex items-start gap-3 relative">
+<div class="w-2 h-2 rounded-full bg-outline-variant mt-2"></div>
+<div class="flex-1 pb-4 border-b border-surface-variant">
+<div class="flex justify-between items-start mb-1">
+<div class="font-label-md text-label-md text-on-surface">Khadijah Aminah</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Oct 12</div>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Won: Exclusive Mushaf</div>
+</div>
+</div>
+<!-- Winner Item -->
+<div class="flex items-start gap-3 relative">
+<div class="w-2 h-2 rounded-full bg-outline-variant mt-2"></div>
+<div class="flex-1 pb-4">
+<div class="flex justify-between items-start mb-1">
+<div class="font-label-md text-label-md text-on-surface">Faisal Rahman</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Oct 10</div>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Won: Umrah Savings Voucher</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-2 text-primary font-label-md text-label-md hover:bg-surface-container-lowest rounded-lg transition-colors">
+                            View All History
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
