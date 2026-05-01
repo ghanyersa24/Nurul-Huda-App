@@ -15,10 +15,12 @@ class AttendanceForm
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->columns(1)
             ->components([
                 Select::make('jamaah_id')
                     ->relationship('jamaah', 'name')
                     ->searchable()
+                    ->preload()
                     ->required()
                     ->afterStateUpdated(function (Set $set, $state) {
                         if ($state) {

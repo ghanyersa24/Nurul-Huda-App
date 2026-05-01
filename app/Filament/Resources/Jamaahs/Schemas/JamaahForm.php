@@ -13,15 +13,13 @@ class JamaahForm
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->columns(1)
             ->components([
+                TextInput::make('name')
+                    ->required(),
                 TextInput::make('rfid')
                     ->required()
                     ->unique(Jamaah::class, 'rfid', ignoreRecord: true),
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('email')
-                    ->email()
-                    ->nullable(),
                 TextInput::make('phone')
                     ->nullable(),
                 DatePicker::make('birth_date')

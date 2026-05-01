@@ -103,7 +103,7 @@ class MentariPagiSpinner extends Component
             'jamaah_id' => $this->winner->id,
             'prize' => $this->prize,
             'rfid_code' => $this->winner->rfid,
-            'drawn_at' => now(),
+            'drawn_at' => $this->selectedDate,
             'notes' => "Won {$this->prize} in Mentari Pagi draw on {$this->selectedDate}",
         ]);
 
