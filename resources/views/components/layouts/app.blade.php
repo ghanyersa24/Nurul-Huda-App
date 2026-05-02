@@ -8,7 +8,8 @@
 @php
     $siteName = 'Masjid Nurul Huda Ambulu';
     $fullTitle = $title === $siteName ? $title : $title . ' | ' . $siteName;
-    $ogImage = $image ?: asset('images/NH Nabawi.png');
+    $heroImage = asset('images/' . rawurlencode('NH Nabawi.png'));
+    $ogImage = $image ?: $heroImage;
     $canonical = url()->current();
 @endphp
 
@@ -31,7 +32,7 @@
 
     {{-- Favicon --}}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/NH Nabawi.png') }}">
+    <link rel="apple-touch-icon" href="{{ $heroImage }}">
 
     {{-- Open Graph (Facebook, WhatsApp, LinkedIn) --}}
     <meta property="og:type" content="website">
@@ -41,8 +42,9 @@
     <meta property="og:title" content="{{ $fullTitle }}">
     <meta property="og:description" content="{{ $description }}">
     <meta property="og:image" content="{{ $ogImage }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1408">
+    <meta property="og:image:height" content="768">
     <meta property="og:image:alt" content="{{ $siteName }}">
 
     {{-- Twitter Card --}}
@@ -63,7 +65,7 @@
         'name' => $siteName,
         'alternateName' => 'Wakaf Masjid Nurul Huda',
         'url' => url('/'),
-        'logo' => asset('images/NH Nabawi.png'),
+        'logo' => $heroImage,
         'image' => $ogImage,
         'description' => $description,
         'address' => [
