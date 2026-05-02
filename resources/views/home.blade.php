@@ -22,7 +22,10 @@
     ];
 @endphp
 
-<x-layouts.app title="Wakaf Pembangunan Masjid Nurul Huda Ambulu">
+<x-layouts.app
+    title="Wakaf Pembangunan Masjid Nurul Huda Ambulu"
+    description="Mari ambil bagian dalam pembangunan Masjid Nurul Huda Ambulu. Wakaf mulai Rp 300.000/kavling. Transparan, mudah, dan langsung melalui Bank Jatim. Setiap donasi adalah investasi akhirat."
+    keywords="wakaf masjid, donasi masjid ambulu, masjid nurul huda ambulu, pembangunan masjid, wakaf pembangunan masjid, suara muhammadiyah ambulu, infaq masjid jember, donasi rumah allah">
     <div class="font-sans text-slate-800">
 
         {{-- HERO --}}
