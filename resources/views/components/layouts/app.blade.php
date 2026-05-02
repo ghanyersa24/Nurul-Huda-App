@@ -9,7 +9,7 @@
     $siteName = 'Masjid Nurul Huda Ambulu';
     $fullTitle = $title === $siteName ? $title : $title . ' | ' . $siteName;
     $heroImage = asset('images/' . rawurlencode('NH Nabawi.png'));
-    $ogImage = $image ?: $heroImage;
+    $ogImage = $image ?: asset('images/og-image.jpg');
     $canonical = url()->current();
 @endphp
 
@@ -42,9 +42,10 @@
     <meta property="og:title" content="{{ $fullTitle }}">
     <meta property="og:description" content="{{ $description }}">
     <meta property="og:image" content="{{ $ogImage }}">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1408">
-    <meta property="og:image:height" content="768">
+    <meta property="og:image:secure_url" content="{{ $ogImage }}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="654">
     <meta property="og:image:alt" content="{{ $siteName }}">
 
     {{-- Twitter Card --}}
